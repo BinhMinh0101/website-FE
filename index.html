@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+    <link rel="stylesheet" href="css/product-info.css" />
+    <link rel="shortcut icon" type="image/jpg" href="Picture/Logo.jpg"/>
+    <script src="fontawesome/4fd2bdfe35.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+    <title>MSNM STORE COMPUTER</title>
+  </head>
+  <body id="body">
+    <!-- <div id="loader-wrapper" onclick="myFunc()">
+      
+      <img src="Picture/mhy-loading-spin.gif" />
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div> -->
+
+    <div id="content">
+      <div id="topbar-menu">
+        <header>
+          <div class="logo">
+            <a href="?home"><img src="Picture/Logo.jpg"/></a>
+          </div>
+          <div class="searchbar">
+              <i class="icon-search"></i>
+              <input type="text" placeholder="Tìm kiếm theo tên sản phẩm hoặc hãng..." id="home-searchbar" />
+              <!-- <button type="submit" onclick="changeUrl()"><span class="fa fa-search"></span></button> -->
+          </div>
+          <div class="header-navbar">
+            <a href="?home" class="item" data-link="home">Trang chủ</a>
+            <a href="?introduce" class="item" data-link="introduce">Giới Thiệu</a>
+            <a href="?product?sanpham&1" class="item" data-link="products">Sản phẩm</a>
+          </div>
+          <div class="left">
+
+            <a onclick=moCart()><span class="fas fa-shopping-cart"></span></a>
+            <a class="user-icon">
+              <span class="fas fa-user-circle"></span>
+              <img class="user-img" src="">
+              <div class="dropdown-content">
+                <div id="index-none">
+                  <div id="btnLogin">Đăng Nhập</div>
+                  <div id="btnNew">Đăng Ký</div>   
+                </div>
+                <div id="index-user">
+                  <div id="tenUser"></div>
+                  <div class="isAdminUser" onclick="window.location.replace('?admin')">Vào trang admin</div>
+                  <div id="btnXuat">Đăng xuất</div>
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+
+         
+        </header>
+      </div>
+
+      <div id="wrapper">
+        <div class="slide-show">
+          <div class="mySlides">
+            <img src="Picture/slide1.png">
+          </div>
+  
+          <div class="mySlides">
+            <img src="Picture/slide2.png">
+          </div>
+  
+          <div class="mySlides">
+            <img src="Picture/slide3.png">
+          </div>
+  
+          <div class="mySlides">
+            <img src="Picture/slide4.png">
+          </div>
+  
+        </div>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+
+
+        <div class="home-content">
+          <div class="box-list">
+            <div class="box-title">
+              APPLE
+            </div>
+            <a href="" class="show-all-products">Xem tất cả</a>
+              <ul class="products">
+                <li>
+                  <div class="">
+                    <div class="product-top">
+                      <a href="?product-info?0037" class="product thumb">
+                        <img src="Picture/30.jpg" alt="">
+                      </a>
+                      <a href="?product-info?0037" class="buy-now">Xem chi tiết</a>
+                    </div><div class="product-info">
+                      <a href="?product-info?0037" class="product-cat">Acer</a>
+                      <a href="?product-info?0037" class="product-name">Acer Predator Helios PH315 54 75YD i7 11800H</a>
+                      <div class="product-price">36,990,000</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="modal" id="login">
+
+      </div>
+      <div class="modal" id="dangki">
+
+      </div>
+      <div class="modal" id="hienThiDatHang">
+        <div class="modal-content">
+            <div class="center">
+                <div class="modal-header">
+                    <span class="btnCloseModal">&times;</span>
+                </div>
+                <h2>Thông Tin Mua Hàng</h2>
+                <form>
+                    <div id="showThongTinKhachHang">
+                      
+                    </div>
+                   
+                      <input type="submit" value="Mua Hàng" onclick="muaHang()"></input>   
+                </form>
+                
+            </div>
+        </div>
+      </div>
+      <div class="modal" id="gioHang">
+            <div class="cart" >
+             <div class="modal-header">
+                <span class="btnCloseModal">&times;</span>
+             </div>
+             <h1>Giỏ Hàng</h1>
+             <form action="">
+               <div id="tableCart" >
+                 <table id="hienThiCart">
+                 
+                 </table>
+             
+               </div>
+               <div class="tongTien">
+                   <div>Tổng Tiền</div>
+                   <div id="showTongTien"></div>
+               </div>
+               <div class="thanhToan">
+                 <input type="button" onclick="xemLichSuDonHang()" value="Lịch Sử Đơn Hàng"></input>
+                 <input type="button" onclick="datHang()" value="Đặt Hàng"></input>  
+               </div>
+             </form>
+            </div>
+           </div>
+      </div>
+      <div class="modal" id="donHang">
+          <div class="cart" >
+            <div class="modal-header">
+              <span class="btnCloseModal">&times;</span>
+            </div>
+           <h1>Lịch Sử Đơn Hàng</h1>
+           <div id="soLuongDonHang1">
+              
+           </div>
+           
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="footer" style="text-align: center">
+      <p style="color: white;">Liên hệ</p>
+      <div class="icon-thanh-vien">
+        <div>
+          <div class="ten-thanh-vien">Lý Tuấn Minh</div>
+        </div>
+        <div>
+          <img src="Picture/NBM.jpg">
+          <div class="ten-thanh-vien">Nguyễn Bình Minh</div>
+        </div>
+        <div>
+          <img src="Picture/HNN.jpg">
+          <div class="ten-thanh-vien">Huỳnh Ngọc Nam</div>
+        </div>
+        <div>
+          <img src="Picture/NDS.jpg">
+          <div class="ten-thanh-vien">Nguyễn Đức Sinh</div>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="footer">
+      <div class="footer-item">
+          <div class="item-header">
+              Phương Thức Thanh Toán
+              <div class="item-line"></div>
+          </div>
+          <div class="item-body">
+              <img src="Picture/thanhtoan.jpg" />
+          </div>
+      </div>
+      <div class="footer-item">
+          <div class="item-header">
+              Để Lại Thông Tin Nhận Tư Vấn
+              <div class="item-line"></div>
+          </div>
+          <div class="item-body">
+              <input type="text" placeholder="Email" class="footer-email" />
+              <input type="text" placeholder="Họ và tên" class="footer-username" />
+              <input type="text" placeholder="Số điện thoại" class="footer-phone" />
+              <input type="submit" value="GỬI NGAY" class="wpcf7-form-control wpcf7-submit button">
+          </div>
+
+      </div>
+      <div class="footer-item">
+          <div class="item-header">
+              Liên Hệ Với Chúng Tôi
+              <div class="item-line"></div>
+          </div>
+          <div class="item-body">
+              <div class="item-icon">
+                  <i class="fas fa-address-card"></i>
+                  Quận Tân Bình, TP Hồ Chí Minh, Việt Nam
+              </div>
+              <div class="item-icon">
+                  <i class="fas fa-phone-alt"></i>
+                  0911.444.666-02853.555.999
+              </div>
+              <div class="item-icon">
+                  <i class="fas fa-envelope"></i>
+                  mnsnstore@gmail.com
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+    
+    
+    <!-- <div class="icon-thanh-vien">
+      <div>
+        <img src="Picture/LTM.jpg">
+        <div class="ten-thanh-vien">Lý Tuấn Minh</div>
+      </div>
+      <div>
+        <img src="Picture/NBM.jpg">
+        <div class="ten-thanh-vien">Nguyễn Bình Minh</div>
+      </div>
+      <div>
+        <img src="Picture/HNN.jpg">
+        <div class="ten-thanh-vien">Huỳnh Ngọc Nam</div>
+      </div>
+      <div>
+        <img src="Picture/NDS.jpg">
+        <div class="ten-thanh-vien">Nguyễn Đức Sinh</div>
+      </div>
+    </div> -->
+
+    <div id="admin-modal"></div>
+
+    <!-- global variable -->
+    <script src="js/global_variable.js"></script>
+
+    <!-- Update local storage -->
+    <script src="js/checkLocalStorage.js"></script>
+    
+    <!-- Home -->
+    <script src="js/search.js"></script>
+    <script src="js/home.js"></script>
+    
+    <!-- Admin -->
+    <script src="js/admin.js"></script>
+    
+    <!-- Product detail -->
+    <script src="js/product_info.js"></script>
+    
+    <!-- Render page -->
+    <script src="js/render/admin_page.js"></script>
+    <script src="js/render/home_page.js"></script>
+    <script src="js/render/introduce_page.js"></script> 
+    <script src="js/render/product_page.js"></script>
+    <script src="js/render/product_info_page.js"></script>
+    <script src="js/render/render.js"></script>
+
+  </body>
+</html>
